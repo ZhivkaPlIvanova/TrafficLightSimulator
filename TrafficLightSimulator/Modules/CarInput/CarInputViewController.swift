@@ -139,7 +139,7 @@ class CarInputViewController: UIViewController, CarInputViewControlling {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue, let keyboardCurve = UIView.AnimationCurve(rawValue: notification.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as? Int ?? 0),  let keyboardDuration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else { return }
         let keyboardHeight = keyboardSize.height
         
-        var bottomConsraint = Constants.BottomOffset + (willHide ? 0 : keyboardHeight)
+        let bottomConsraint = Constants.BottomOffset + (willHide ? 0 : keyboardHeight)
         self.actionButton.easy.layout(Bottom(bottomConsraint).to(self.view.safeAreaLayoutGuide, .bottom))
         
         let animator = UIViewPropertyAnimator(duration: keyboardDuration, curve: keyboardCurve) { [weak self] in
